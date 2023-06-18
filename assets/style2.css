@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .header {
+    width: 100%;
+    border: 2px dashed rgb(35, 250, 189);
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-functions,
+  .main-content {
+    flex: 0 0 30%;
+    border: 2px dashed rgb(133, 15, 236);
+    padding: 10px;
+    height: 75vh;
+    margin: 1% 1% 0 0;
+    text-align: center;
+    overflow: auto;
+  }
+  
+  .main-content {
+    flex: 0 0 69%;
+    float: right;
+    display: flex;
+  }
+  
+  .search,
+  .city-selector,
+  .current-weather,
+  .forecast {
+    border: 2px dashed rgb(51, 241, 9);
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+    overflow: auto;
+  }
+  
+  .search {
+    height: 30%;
+    width: 98%;
+  }
+  
+  .city-selector,
+  .forecast {
+    height: 67%;
+    width: 98%;
+    margin-top: 15px;
+  }
+  
+  .current-weather {
+    height: 30%;
+    width: 98%;
+  }
+  

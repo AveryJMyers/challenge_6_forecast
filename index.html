@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast</title>
-    <link rel="stylesheet" href="./assets/style.css">
-</head>
-<body>
-    <header class="header">
-        Weather Forecast
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather Forecast</title>
+        <link rel="stylesheet" href="./assets/style.css">
+    </head>
+    <body>
+        <header class="header">
+            Weather Forecast
+        </header>
 
-    <section class="search-functions">
-        <div  class="search"> search </div>
-        <div class="city-selector"> select</div>
-    </section>
+        <section class="search-functions">
+            <form id="cityForm">
+                <input type="text" id="cityInput">
+                <button type="submit">Submit</button>
+            </form>
+            <div id="historySelector" class="history-selector">Previous Cities</div>
+                <ul>
+                </ul>
+                <button id = "clearSearchBtn" class="btn hidden"> Clear Search</button>
+            </div>
+        </section>
 
-    <main class="main-content">
-        <div class="current-weather"></div>
-        <div class="forecast"></div>
-    </main>
+        <main id="mainContent" class="main-content">
+            <div id="currentWeather" class="current-weather"></div>
+            <div id ="forecastContainer" class="forecast-container"></div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+        crossorigin="anonymous"></script>
 
-    <script src="./assets/script.js"></script>
-</body>
+        <script src="./assets/script2.js"></script>
+
+    </body>
+
 </html>

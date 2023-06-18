@@ -155,13 +155,3 @@ function cityButtons() {
   }
 
 clearSearchBtn.addEventListener("click", clearSearchHistory);
-
-// cityButton.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   cityName = cityButton.innerHTML;
-//   forecastContainer.innerHTML = "";
-//   getCity(); // Call the getCity() function here
-//   cityButtons();
-//   userInput.value = "";
-// });
-

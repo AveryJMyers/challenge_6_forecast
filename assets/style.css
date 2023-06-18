@@ -60,19 +60,38 @@
     border: 2px dashed rgb(51, 241, 9);
     text-align: center;
     padding: 10px;
-    height: 30%;
+    height: 40%;
     width: 98%;
-    align-content: center;
-    margin: auto;
+    margin: 0;
+    overflow: hidden;
+}
+
+.current-weather p{
+    text-align: justify;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
 }
 
 .forecast{
+    display: inline-flex;
     border: 2px dashed rgb(51, 241, 9);
     text-align: center;
     padding: 10px;
-    height: 67%;
-    width: 98%;
-    align-content: center;
-    margin: auto;
-    margin-top: 15px;
+    height: 58%;
+    width: 19%;
+    margin: 1px;
+    float: left;
+    
 }
+
+  #historySelector li {
+    width: 100%;
+    list-style: none;
+  }
+  
+
+  li {
+    width: 100%;
+    list-style: none;
+  }
