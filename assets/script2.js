@@ -88,7 +88,7 @@ function displayForecast(data) {
         forecastCard.classList.add("forecast");
     
         forecastCard.innerHTML =
-        `<h2>${cityName}, ${dateForecast}</h2>
+        `<h3>${cityName}, ${dateForecast}</h2>
         <p>Tempature:${tempForecast}°F</p>
         <p>Humidity:${humidityForecast}%</p>
         <p>Wind:${windForecast}MPH</p>
@@ -145,7 +145,7 @@ function cityButtons() {
       var cityName = cityNames[i];
   
       var cityButton = document.createElement("button");
-      cityButton.classList.add("btn", "searchHistory", "bg", "bg-light");
+      cityButton.classList.add("btn", "searchHistory", "bg", "bg-");
       cityButton.innerHTML = cityName;
   
       var listItem = document.createElement("li");
@@ -163,34 +163,6 @@ function cityButtons() {
   }
 
 clearSearchBtn.addEventListener("click", clearSearchHistory);
-
-
-// function historyPicker(event) {
-//   const cityName = event.target.innerHTML; // Use event.target to get the clicked button element
-//   if (!cityName) {
-//     console.error("City name is missing");
-//     return;
-//   }
-//   const weatherUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`;
-
-//   fetch(weatherUrl)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error("Bad Request");
-//       }
-//       return response.json();
-//     })
-//     .then(data => {
-//       const cityLat = data[0].lat;
-//       const cityLon = data[0].lon;
-
-//       getWeather(cityLat, cityLon); // Assuming there's a function named getWeather that accepts latitude and longitude
-//     })
-//     .catch(error => {
-//       console.error("Error:", error);
-//       // Handle the error here (e.g., display an error message to the user)
-//     });
-// }
 
 
 
