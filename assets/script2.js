@@ -16,6 +16,7 @@ let cityLat = "47.6062";
 let cityLon = "122.3321";
 let cityName = "Seattle";
 
+
 function getCity() {
     const cityName = userInput.value;
     if (!cityName) {
@@ -79,13 +80,19 @@ function displayForecast(data) {
     for (let i = 1; i < 40; i += 8) {
         const tempForecast = data.list[i].main.temp;
         const dateForecast = data.list[i].dt_txt;
+        const humidityForecast = data.list[i].main.humidity;
+        const windForecast = data.list[i].wind.speed;
+        const iconForecast = data.list[i].weather[0].icon;
 
         const forecastCard = document.createElement("div");
         forecastCard.classList.add("forecast");
     
         forecastCard.innerHTML =
-        `<p>${tempForecast}</p>
-        <p>${dateForecast}</p>`
+        `<h2>${cityName}, ${dateForecast}</h2>
+        <p>Tempature:${tempForecast}°F</p>
+        <p>Humidity:${humidityForecast}%</p>
+        <p>Wind:${windForecast}MPH</p>
+        <img src="http://openweathermap.org/img/w/${iconForecast}.png" alt="weather icon">`
 
         forecastContainer.appendChild(forecastCard);
     }
@@ -103,31 +110,32 @@ cityForm.addEventListener("submit", function(event) {
 var cityButton; // Define cityButton variable outside the function
 
 function cityButtons() {
-    var cityName = userInput.value;
-    
-    if (cityName === "") {
-      return;
-    }
+  var cityName = userInput.value;
 
-    var cityButton = document.createElement("button");
-    var listItem = document.createElement("li");
-    var historySelector = document.getElementById("historySelector");
-    var ulElement = historySelector.nextElementSibling;
-    
-   
-    cityButton.classList.add("btn", "searchHistory");
-    cityButton.innerHTML = cityName;
-  
-    listItem.appendChild(cityButton);
-    ulElement.appendChild(listItem);
-
-    var cityNames = JSON.parse(localStorage.getItem("cityNames")) || [];
-    cityNames.push(cityName);
-    localStorage.setItem("cityNames", JSON.stringify(cityNames));
-
-
-
+  if (cityName === "") {
+    return;
   }
+
+  var cityButton = document.createElement("button");
+  var listItem = document.createElement("li");
+  var historySelector = document.getElementById("historySelector");
+  var ulElement = historySelector.nextElementSibling;
+
+  cityButton.classList.add("btn", "searchHistory");
+  cityButton.innerHTML = cityName;
+
+  // Attach the event listener to the button immediately after creating it
+  // cityButton.addEventListener("click", historyPicker);
+
+  listItem.appendChild(cityButton);
+  ulElement.appendChild(listItem);
+
+  var cityNames = JSON.parse(localStorage.getItem("cityNames")) || [];
+  cityNames.push(cityName);
+  localStorage.setItem("cityNames", JSON.stringify(cityNames));
+}
+
+
   
 
   window.addEventListener("DOMContentLoaded", function() {
@@ -137,7 +145,7 @@ function cityButtons() {
       var cityName = cityNames[i];
   
       var cityButton = document.createElement("button");
-      cityButton.classList.add("btn", "searchHistory");
+      cityButton.classList.add("btn", "searchHistory", "bg", "bg-light");
       cityButton.innerHTML = cityName;
   
       var listItem = document.createElement("li");
@@ -155,3 +163,36 @@ function cityButtons() {
   }
 
 clearSearchBtn.addEventListener("click", clearSearchHistory);
+
+
+// function historyPicker(event) {
+//   const cityName = event.target.innerHTML; // Use event.target to get the clicked button element
+//   if (!cityName) {
+//     console.error("City name is missing");
+//     return;
+//   }
+//   const weatherUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`;
+
+//   fetch(weatherUrl)
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error("Bad Request");
+//       }
+//       return response.json();
+//     })
+//     .then(data => {
+//       const cityLat = data[0].lat;
+//       const cityLon = data[0].lon;
+
+//       getWeather(cityLat, cityLon); // Assuming there's a function named getWeather that accepts latitude and longitude
+//     })
+//     .catch(error => {
+//       console.error("Error:", error);
+//       // Handle the error here (e.g., display an error message to the user)
+//     });
+// }
+
+
+
+
+

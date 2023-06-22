@@ -1,12 +1,18 @@
+:root{
+    --background-color: #e5ece9;
+    --text: #000000;
+}
 *{
     box-sizing: border-box;
 }
 
 .header{
     width: 100%;
-    border: 2px dashed red;
+    /* border: 2px dashed red; */
     text-align: center;
     padding: 10px;
+    background-color: var(--background-color);
+    color: var(--text);
 }
 
 .search-functions, .main-content{
@@ -14,29 +20,31 @@
     vertical-align: baseline;
 }
 .search-functions{
-    border: 2px dashed red;
+    /* border: 2px dashed red; */
     padding: 10px;
-    width: 30%;
+    width: 20%;
     text-align: center;
     margin: 1% 1% 0 0;
     height: 75vh;
     text-align: center;
+    background-color: var(--background-color);
 
 }
 
 .main-content{
-    border: 2px dashed red;
+    /* border: 2px dashed red; */
     padding: 10px;
-    width: 69%;
+    width: 79%;
     height: 75vh;
     float: right;
     margin: 1% 0 0 0;
     text-align: center;
     justify-content: center;
+    background-color: var(--background-color);
 }
 
 .search{
-    border: 2px dashed rgb(51, 241, 9);
+    /* border: 2px dashed rgb(51, 241, 9); */
     text-align: center;
     padding: 10px;
     height: 30%;
@@ -46,7 +54,7 @@
 }
 
 .city-selector{
-    border: 2px dashed rgb(51, 241, 9);
+    /* border: 2px dashed rgb(51, 241, 9); */
     text-align: center;
     padding: 10px;
     height: 67%;
@@ -57,13 +65,14 @@
 }
 
 .current-weather{
-    border: 2px dashed rgb(51, 241, 9);
+    /* border: 2px dashed rgb(51, 241, 9); */
     text-align: center;
     padding: 10px;
     height: 40%;
-    width: 98%;
+    width: 100%;
     margin: 0;
     overflow: hidden;
+    background-color: aliceblue;
 }
 
 .current-weather p{
@@ -73,25 +82,36 @@
     overflow: hidden;
 }
 
-.forecast{
-    display: inline-flex;
-    border: 2px dashed rgb(51, 241, 9);
+.forecast-container {
+    display: flex; /* Use flexbox layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Distribute items with space between them */
+    align-items: flex-start; /* Align items to the top of the container */
+    /* border: 2px dashed rgb(51, 241, 9); */
     text-align: center;
     padding: 10px;
-    height: 58%;
-    width: 19%;
-    margin: 1px;
-    float: left;
-    
-}
-
-  #historySelector li {
+    height: 55%;
     width: 100%;
-    list-style: none;
+    margin-top: 15px;
+    overflow: hidden;
+    background-color: aliceblue;
   }
   
-
-  li {
-    width: 100%;
-    list-style: none;
+  .forecast {
+    text-align: justify;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+    /* border: 2px dashed rgb(51, 241, 9); */
+    width: 20%;
   }
+  
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+    width: 100%;
+}
+
+

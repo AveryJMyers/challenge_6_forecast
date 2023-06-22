@@ -10,18 +10,18 @@
     </head>
     <body>
         <header class="header">
-            Weather Forecast
+            <h1>Weather Forecast</h1>
         </header>
 
         <section class="search-functions">
             <form id="cityForm">
-                <input id="searchBar" class ="form-control" placeholder="Search a city..." >
-                <button type="submit" id="submitBtn"class="btn btn-dark">Submit</button>
+                <input type="text" id="cityInput" class="form-control" placeholder="Search a City...">
+                <button type="submit" class="btn btn-info">Submit</button>
             </form>
-            <div id="historySelector" class="history-selector">
-                <ul id="cityPicker">
+            <div id="historySelector" class="history-selector"></div>
+                <ul>
                 </ul>
-                <button id = "clearSearchBtn" class="btn btn-dark"> Clear Search</button>
+                <button id = "clearSearchBtn" class="btn btn-info hidden"> Clear Search</button>
             </div>
         </section>
 
