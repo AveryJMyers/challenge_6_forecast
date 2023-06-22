@@ -167,4 +167,3 @@ clearSearchBtn.addEventListener("click", clearSearchHistory);
 
 
 
-
