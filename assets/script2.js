@@ -12,9 +12,13 @@ var cityButton;
 var clearSearchBtn = document.querySelector("#clearSearchBtn");
 var error; 
 
-let cityLat = "47.6062";
+/*let cityLat = "47.6062";
 let cityLon = "122.3321";
-let cityName = "Seattle";
+let cityName = "Seattle";*/
+
+let cityLat= "";
+let cityLon= "";
+let cityName= "";
 
 
 function getCity() {
@@ -116,24 +120,28 @@ function cityButtons() {
     return;
   }
 
-  var cityButton = document.createElement("button");
+  var button = document.createElement("button");
   var listItem = document.createElement("li");
   var historySelector = document.getElementById("historySelector");
   var ulElement = historySelector.nextElementSibling;
 
-  cityButton.classList.add("btn", "searchHistory");
-  cityButton.innerHTML = cityName;
+  button.classList.add("btn", "searchHistory");
+  button.innerHTML = cityName;
 
-  // Attach the event listener to the button immediately after creating it
-  // cityButton.addEventListener("click", historyPicker);
+  button.addEventListener("click", function() {
+    userInput.value = cityName;
+    forecastContainer.innerHTML = "";
+    historyClicker(this); // Pass the clicked button as an argument
+  });
 
-  listItem.appendChild(cityButton);
+  listItem.appendChild(button);
   ulElement.appendChild(listItem);
 
   var cityNames = JSON.parse(localStorage.getItem("cityNames")) || [];
   cityNames.push(cityName);
   localStorage.setItem("cityNames", JSON.stringify(cityNames));
 }
+
 
 
   
@@ -147,6 +155,12 @@ function cityButtons() {
       var cityButton = document.createElement("button");
       cityButton.classList.add("btn", "searchHistory", "bg", "bg-");
       cityButton.innerHTML = cityName;
+
+      cityButton.addEventListener("click", function() {
+        userInput.value = cityName; // Set the user input value to the city name
+        forecastContainer.innerHTML = ""; // Clear the forecast container
+        historyClicker(); // Fetch weather data for the selected city
+      });
   
       var listItem = document.createElement("li");
       listItem.appendChild(cityButton);
@@ -166,4 +180,36 @@ clearSearchBtn.addEventListener("click", clearSearchHistory);
 
 
 
+function historyClicker(cityButton){
+    const cityName = cityButton.innerHTML;
+    if (!cityName) {
+      console.error("City name is missing");
+      return;
+    }
+    const weatherUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${apiKey}`;
+  
+    fetch(weatherUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Bad Request");
+        }
+        return response.json();
+      })
+      .then(data => {
+        cityLat = data[0].lat;
+        cityLon = data[0].lon;
+  
+        getWeather();
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        // Handle the error here (e.g., display an error message to the user)
+      });
+  }
 
+
+  
+  
+
+
+  
